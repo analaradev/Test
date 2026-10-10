@@ -636,31 +636,51 @@
       ctx.beginPath(); ctx.arc(cx, cy + 1, 24, 0, Math.PI * 2); ctx.stroke();
       ctx.restore();
     }
-    ctx.fillStyle = "#15203e";
-    rounded(cx - 14, cy + 12, 10, 11, 3);
-    rounded(cx + 4, cy + 12, 10, 11, 3);
-    ctx.fillStyle = "#15203e";
-    rounded(cx - 23, cy - 9, 10, 25, 4);
-    ctx.fillStyle = color;
-    rounded(cx - 20, cy - 6, 8, 19, 3);
     ctx.strokeStyle = "#15203e";
     ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(cx, cy - 16); ctx.lineTo(cx, cy - 24); ctx.stroke();
-    ctx.fillStyle = "#ffe35b";
-    ctx.beginPath(); ctx.arc(cx, cy - 25, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.lineCap = "round";
+    ctx.fillStyle = "#15203e";
+    for (const legX of [-15, -7, 7, 15]) {
+      ctx.beginPath();
+      ctx.moveTo(cx + legX, cy + 8);
+      ctx.lineTo(cx + legX + (legX < 0 ? -5 : 5), cy + 17);
+      ctx.stroke();
+    }
+    for (const clawX of [-1, 1]) {
+      const side = clawX < 0 ? -1 : 1;
+      ctx.beginPath();
+      ctx.moveTo(cx + side * 14, cy - 1);
+      ctx.lineTo(cx + side * 24, cy - 9);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx + side * 27, cy - 11, 6, side < 0 ? .35 : 2.8, side < 0 ? 2.8 : 5.95);
+      ctx.stroke();
+    }
     ctx.fillStyle = color;
-    rounded(cx - 17, cy - 18, 34, 36, 11);
-    ctx.strokeStyle = "#15203e";
-    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy + 1, 19, 16, 0, 0, Math.PI * 2);
+    ctx.fill();
     ctx.stroke();
-    ctx.fillStyle = "#172848";
-    rounded(cx - 14, cy - 9, 28, 16, 7);
-    ctx.fillStyle = "#a8eeff";
-    rounded(cx - 11, cy - 7, 22, 11, 5);
-    ctx.fillStyle = "#ffffffcc";
-    rounded(cx - 8, cy - 5, 10, 3, 2);
-    ctx.fillStyle = "#fff7d2";
-    ctx.beginPath(); ctx.arc(cx, cy + 11, 2.5, 0, Math.PI * 2); ctx.fill();
+    for (const eyeX of [-7, 7]) {
+      ctx.strokeStyle = "#15203e";
+      ctx.beginPath();
+      ctx.moveTo(cx + eyeX, cy - 11);
+      ctx.lineTo(cx + eyeX, cy - 21);
+      ctx.stroke();
+      ctx.fillStyle = "#fff7d2";
+      ctx.beginPath();
+      ctx.arc(cx + eyeX, cy - 23, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#15203e";
+      ctx.beginPath();
+      ctx.arc(cx + eyeX, cy - 23, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.strokeStyle = "#15203e";
+    ctx.beginPath();
+    ctx.arc(cx, cy + 2, 7, .2, Math.PI - .2);
+    ctx.stroke();
 
     const label = String(player.name || "Jugador").slice(0, 10);
     ctx.font = "700 10px 'Space Mono', monospace";
