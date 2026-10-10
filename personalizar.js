@@ -5,7 +5,7 @@ window.PERSONALIZAR = {
   subtitulo: "Recoge estrellas antes de que termine el tiempo. ¡Gana quien consiga más!",
   mensajeMision: "Consigue más estrellas que los demás.",
   mensajeFinal: "¡Tiempo!",
-  colorEstrellas: "#ffe35b",
+  colorEstrellas: "#31c9c3",
   colorMapa: "#1d2648",
   coloresJugadores: ["#ff6b57", "#78e4d5", "#b999ff", "#ffc266", "#81b7ff", "#d8f26a"]
 };
