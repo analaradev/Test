@@ -2,11 +2,12 @@
 // `const firebaseConfig = { ... };` y reemplaza todo este archivo con él.
 // No copies las líneas de npm, import ni initializeApp. Modificaion ..
 const firebaseConfig = {
-  apiKey: "AIzaSyBOJPUlmZXz00oYKtvB7GTeQvcuBursSiM",
-  authDomain: "caza-estrellas-test.firebaseapp.com",
-  projectId: "caza-estrellas-test",
-  storageBucket: "caza-estrellas-test.firebasestorage.app",
-  messagingSenderId: "106072749612",
-  appId: "1:106072749612:web:8d537e9938d07a1cdc4389",
-  measurementId: "G-GDWVWTN105"
+  apiKey: "AIzaSyADCoWiRoeWG4OTtrpr5NtIekua4RwOqQU",
+  authDomain: "caza-estrellas.firebaseapp.com",
+  databaseURL: "https://caza-estrellas-default-rtdb.firebaseio.com",
+  projectId: "caza-estrellas",
+  storageBucket: "caza-estrellas.firebasestorage.app",
+  messagingSenderId: "519839303958",
+  appId: "1:519839303958:web:45086af874ac1869526837",
+  measurementId: "G-1KZS2GL4Q5"
 };
