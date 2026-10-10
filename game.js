@@ -636,31 +636,76 @@
       ctx.beginPath(); ctx.arc(cx, cy + 1, 24, 0, Math.PI * 2); ctx.stroke();
       ctx.restore();
     }
-    ctx.fillStyle = "#15203e";
-    rounded(cx - 14, cy + 12, 10, 11, 3);
-    rounded(cx + 4, cy + 12, 10, 11, 3);
-    ctx.fillStyle = "#15203e";
-    rounded(cx - 23, cy - 9, 10, 25, 4);
-    ctx.fillStyle = color;
-    rounded(cx - 20, cy - 6, 8, 19, 3);
+    ctx.save();
+    ctx.strokeStyle = "#15203e";
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    for (const side of [-1, 1]) {
+      for (const legY of [-4, 3, 10]) {
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.moveTo(cx + side * 12, cy + legY);
+        ctx.lineTo(cx + side * 23, cy + legY + 3);
+        ctx.stroke();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+        ctx.strokeStyle = "#15203e";
+      }
+      const clawY = cy - 7;
+      ctx.lineWidth = 7;
+      ctx.beginPath();
+      ctx.moveTo(cx + side * 13, cy - 3);
+      ctx.lineTo(cx + side * 27, clawY);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(cx + side * 29, clawY, 8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#fff7d2";
+      ctx.beginPath();
+      ctx.arc(cx + side * 31, clawY - 3, 3, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    const shell = ctx.createLinearGradient(cx, cy - 16, cx, cy + 17);
+    shell.addColorStop(0, "#ffffff66");
+    shell.addColorStop(.28, color);
+    shell.addColorStop(1, color);
+    ctx.fillStyle = shell;
     ctx.strokeStyle = "#15203e";
     ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(cx, cy - 16); ctx.lineTo(cx, cy - 24); ctx.stroke();
-    ctx.fillStyle = "#ffe35b";
-    ctx.beginPath(); ctx.arc(cx, cy - 25, 4, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = color;
-    rounded(cx - 17, cy - 18, 34, 36, 11);
-    ctx.strokeStyle = "#15203e";
-    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy + 1, 20, 16, 0, 0, Math.PI * 2);
+    ctx.fill();
     ctx.stroke();
-    ctx.fillStyle = "#172848";
-    rounded(cx - 14, cy - 9, 28, 16, 7);
-    ctx.fillStyle = "#a8eeff";
-    rounded(cx - 11, cy - 7, 22, 11, 5);
-    ctx.fillStyle = "#ffffffcc";
-    rounded(cx - 8, cy - 5, 10, 3, 2);
-    ctx.fillStyle = "#fff7d2";
-    ctx.beginPath(); ctx.arc(cx, cy + 11, 2.5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "#ffffff55";
+    ctx.beginPath();
+    ctx.ellipse(cx - 7, cy - 7, 7, 3, -.35, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#15203e";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy + 2, 7, .2, Math.PI - .2);
+    ctx.stroke();
+    for (const eyeX of [-7, 7]) {
+      ctx.strokeStyle = "#15203e";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(cx + eyeX, cy - 11);
+      ctx.lineTo(cx + eyeX, cy - 21);
+      ctx.stroke();
+      ctx.fillStyle = "#fff7d2";
+      ctx.beginPath();
+      ctx.arc(cx + eyeX, cy - 23, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#15203e";
+      ctx.beginPath();
+      ctx.arc(cx + eyeX, cy - 23, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
 
     const label = String(player.name || "Jugador").slice(0, 10);
     ctx.font = "700 10px 'Space Mono', monospace";

@@ -178,25 +178,42 @@ h1 {
   z-index: 2;
   width: 72px; height: 84px;
   border: 4px solid var(--ink);
-  border-radius: 25px 25px 13px 13px;
+  border-radius: 48% 48% 38% 38%;
+  background-image: linear-gradient(145deg, #ffffff55, transparent 35%);
   box-shadow: 5px 6px 0 #0b1630;
 }
 .art-avatar::before {
   content: '';
   position: absolute;
-  top: 19px; left: 10px;
-  width: 43px; height: 24px;
+  top: -17px; left: 14px;
+  width: 12px; height: 12px;
   border: 4px solid var(--ink);
-  border-radius: 11px;
-  background: #d4f7ff;
+  border-radius: 50%;
+  background: #fff7d2;
+  box-shadow: 27px 0 0 -4px #fff7d2, 27px 0 0 0 var(--ink);
 }
-.art-avatar span {
+.art-avatar .claw {
   position: absolute;
-  right: -14px; top: 36px;
-  width: 16px; height: 28px;
+  top: 31px;
+  width: 18px; height: 20px;
   border: 4px solid var(--ink);
-  border-radius: 3px;
+  border-radius: 55% 45% 55% 45%;
   background: inherit;
+}
+.art-avatar .claw::after {
+  content: '';
+  position: absolute;
+  inset: 5px 3px;
+  border-radius: 50%;
+  background: #ffffff55;
+}
+.art-avatar .claw-left {
+  left: -18px;
+  transform: rotate(28deg);
+}
+.art-avatar .claw-right {
+  right: -18px;
+  transform: rotate(-28deg);
 }
 .avatar-one { left: 9%; bottom: 20%; background: var(--coral); transform: rotate(-16deg); }
 .avatar-two { right: 8%; top: 24%; background: var(--mint); transform: rotate(14deg); }
@@ -512,8 +529,10 @@ canvas {
   .art-ring { width: 175px; height: 175px; }
   .art-star { font-size: 7rem; }
   .art-avatar { width: 52px; height: 62px; border-width: 3px; }
-  .art-avatar::before { top: 13px; left: 6px; width: 34px; height: 19px; border-width: 3px; }
-  .art-avatar span { right: -11px; top: 26px; width: 13px; height: 20px; border-width: 3px; }
+  .art-avatar::before { top: -12px; left: 8px; width: 9px; height: 9px; border-width: 3px; box-shadow: 20px 0 0 -3px #fff7d2, 20px 0 0 0 var(--ink); }
+  .art-avatar .claw { top: 23px; width: 13px; height: 16px; border-width: 3px; }
+  .art-avatar .claw-left { left: -14px; }
+  .art-avatar .claw-right { right: -14px; }
   .art-caption { right: -8px; font-size: .61rem; }
   .join-card, .how-card { padding: 21px; }
   .game { width: calc(100vw - 44px); padding-top: 14px; }
